@@ -235,7 +235,7 @@ def generate_man_pages():
     for filename in files:  # filename doesn't have .rst extension
         full_path = os.path.join('man', filename)
         with open(full_path) as f:
-            header = f.readline().rstrip();
+            header = f.readline(5_000_000).rstrip();
         match = HEADER_PATTERN.match(header)
         yield (full_path[:-4], match.group('name'), match.group('description'),
                ['Allen Li'], match.group('section'))
